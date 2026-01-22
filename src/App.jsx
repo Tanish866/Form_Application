@@ -5,7 +5,10 @@ import FormContext from './Providers/FormContext';
 
 function App() {
 
-  const [ formInput, setformInput ] = useState({});
+  const [ formInput, setformInput ] = useState({
+    email: "",
+    password: ""
+  });
 
   return (
     <>

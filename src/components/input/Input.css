@@ -1,3 +1,14 @@
 .error-input{
     border: 1px solid red;
 }
+
+.shake{
+    animation: shake-input 0.1s linear 0s 3;
+}
+
+@keyframes shake-input {
+    0%{margin-left: 0rem;}
+    25%{margin-left: 0.2rem;}
+    75%{margin-left: -0.2rem;}
+    100%{margin-left: 0rem;}
+}

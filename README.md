@@ -1,16 +1,44 @@
-# React + Vite
+## useRef in React
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+`useRef` is a React Hook used to **store mutable values or access DOM elements** without causing a component to re-render.
 
-Currently, two official plugins are available:
+### Key Points
+- Persists values across renders
+- Changing `ref.current` does **not** trigger a re-render
+- Commonly used to access DOM elements
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Use Cases
+- Focus or access input elements (`inputRef.current.focus()`)
+- Store timers or interval IDs
+- Keep track of previous values
+- Avoid unnecessary re-renders
 
-## React Compiler
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Controlled vs Uncontrolled Components 
 
-## Expanding the ESLint configuration
+### Controlled Components
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+A **controlled component** is one where **form data is controlled by React state**.
+
+#### Key Points
+- Uses `useState`
+- Input value comes from state
+- Updates handled via `onChange`
+- Better control and validation
+
+
+<input value={name} onChange={(e) => setName(e.target.value)} />
+
+
+### Uncontrolled Components
+
+An **uncontrolled component** is one where **form data is handled by the DOM itself** using refs.
+
+#### Key Points
+- Uses `useRef`
+- No state updates on change
+- Value accessed only when needed
+- Less control, simpler to use
+
+<input ref={inputRef} />
+
