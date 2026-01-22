@@ -42,3 +42,33 @@ An **uncontrolled component** is one where **form data is handled by the DOM its
 
 <input ref={inputRef} />
 
+
+## useImperativeHandle in React
+
+`useImperativeHandle` is a React Hook used with `forwardRef` to **customize the values or methods exposed to a parent component** through a ref.
+
+### Why use it?
+Normally, refs expose the **entire DOM element or component**.  
+`useImperativeHandle` lets you **control what the parent can access**.
+
+### Key Points
+- Works only with `forwardRef`
+- Controls what is exposed via `ref`
+- Improves encapsulation
+- Avoids direct DOM manipulation by parent
+
+
+import { forwardRef, useImperativeHandle, useRef } from "react";
+
+const Input = forwardRef((props, ref) => {
+  const inputRef = useRef();
+
+  useImperativeHandle(ref, () => ({
+    focus: () => inputRef.current.focus()
+  }));
+
+  return <input ref={inputRef} />;
+});
+
+export default Input;
+
